@@ -1,0 +1,49 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.21.1"
+  },
+  "name": "challenge-backend---nodejs",
+  "description": "Objetivo  Desarrollar una API para explorar el mundo de Disney, la cual permitirá conocer y modificar los personajes que lo componen y entender en qué películas estos participaron.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "@janiscommerce/api-schema-builder": "^1.1.1",
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.1",
+    "eslint": "^8.18.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "http": "^0.0.1-security",
+    "joi": "^17.6.0",
+    "joi-objectid": "^4.0.2",
+    "mocha": "^10.0.0",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.7.5",
+    "nodemon": "^2.0.18",
+    "nyc": "^15.1.0",
+    "sinon": "^14.0.0"
+  },
+  "scripts": {
+    "test": "mocha --exit -R nyan --recursive tests/",
+    "demon": "nodemon server.js",
+    "test-watch": "npm test -- -w",
+    "coverage": "nyc npm test",
+    "api-schema-builder": "npx @janiscommerce/api-schema-builder",
+    "test-schema": "npx redoc-cli serve schemas/public.json",
+    "generate-html": "npx redoc-cli bundle schemas/public.json schemas/; mv redoc-static.html src/public/",
+    "lint": "eslint ./src ./tests",
+    "doc": "npm run api-schema-builder; npm run test-schema"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emmaperez2197/CHALLENGE-BACKEND---NodeJs.git"
+  },
+  "author": "Emmanuel Perez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emmaperez2197/CHALLENGE-BACKEND---NodeJs/issues"
+  },
+  "homepage": "https://github.com/emmaperez2197/CHALLENGE-BACKEND---NodeJs#readme"
+}
