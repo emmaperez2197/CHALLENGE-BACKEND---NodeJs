@@ -4,20 +4,9 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const routes = require('./src/routes/index');
 
-const { db } = require('./modules/database/Sequelize');
+const sequelize = require('./modules/database/database');
 
 const app = express();
-
-async function dbConnection() {
-	try {
-		await db.authenticate();
-		return console.log('connect database');
-	} catch(error) {
-		return console.log(error);
-	}
-}
-
-dbConnection();
 
 app.use(morgan('dev'));
 app.use((req, res, next) => {
@@ -34,6 +23,14 @@ app.use(bodyParser.json());
 /* eslint-disable */
 app.listen(process.env.PORT, () => {
 	console.log('listening to port:', process.env.PORT);
+	//connect database
+ 	// si esta en true reinicia las tablas constantemente
+	sequelize.sync({force: false})
+		.then(() => {
+			console.log('connect database');
+		}).catch((err) => {
+			console.log(err);
+		});
 });
 
 

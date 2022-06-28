@@ -1,5 +1,5 @@
 let app = null;
-const personaje = require('./personaje');
+const personaje = require('./personajes');
 
 const defineRoute = (ruta, requests) => {
 	const baseRequest = '/api/';

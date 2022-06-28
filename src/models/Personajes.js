@@ -1,8 +1,9 @@
-const { DataTypes } = require('sequelize');
-const { db } = require('../../modules/database/Sequelize');
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../../modules/database/database');
 
-const personaje = db.define('Personaje', {
-
+class Personaje extends Model {}
+// inicializo
+Personaje.init({
 	id: {
 		type: DataTypes.INTEGER,
 		primaryKey: true,
@@ -13,14 +14,20 @@ const personaje = db.define('Personaje', {
 		allowNull: false
 	},
 	edad: {
-		type: DataTypes.INTEGER.UNSIGNED
+		type: DataTypes.INTEGER.UNSIGNED,
+		allowNull: false
 	},
 	peso: {
-		type: DataTypes.INTEGER.UNSIGNED
+		type: DataTypes.INTEGER.UNSIGNED,
+		allowNull: false
 	},
-	peliculaOSerie: {
+	pelicula: {
 		type: DataTypes.STRING
-	}
-});
 
-module.exports = personaje;
+	}
+
+}, {
+	sequelize, // We need to pass the connection instance
+	modelName: 'personaje'
+});
+module.exports = Personaje;
