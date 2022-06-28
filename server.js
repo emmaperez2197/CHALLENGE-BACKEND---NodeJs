@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const routes = require('./src/routes/index');
 
 const { db } = require('./modules/database/Sequelize');
 
@@ -34,5 +35,10 @@ app.use(bodyParser.json());
 app.listen(process.env.PORT, () => {
 	console.log('listening to port:', process.env.PORT);
 });
+
+
+routes(app);
+
+module.exports = app;
 
 
